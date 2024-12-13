@@ -1,0 +1,96 @@
+
+<html lang="en" ><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><head><style  type=text/css>td{font-family:courier;font-size:18px}
+p{line-height:23.0px;}</style></head><body  style="background-color:#ffffee;margin:5px 5px 0px 5px"><table align=left><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+</p></td><td  align=left valign=top><p><nobr>evaluate(node)</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>if( node.data=<font color=#FF00CC>'+'</font>) <b>return</b></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>evaluate(node.leftChild)+evaluate(node.rightChild);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>else</b> if( node.data=<font color=#FF00CC>'-'</font>) <b>return</b> evaluate(node.leftChild)-</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>evaluate(node.rightChild);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>else</b> if( node.data=<font color=#FF00CC>'*'</font>) <b>return</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>evaluate(node.leftChild)*evaluate(node.rightChild);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>else</b> if( node.data=<font color=#FF00CC>'/'</font>) <b>return</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>evaluate(node.leftChild)/evaluate(node.rightChild);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>return</b> node. Data;</nobr><br>
+<nobr>}</nobr><br>
+<nobr>evaluate(tree)</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>return</b> evaluate(tree. root);</nobr><br>
+<nobr>}</nobr><br>
+</p></td></tr></table></center></body>
+<script > if(window==parent)window.moveTo(screen.width/2 - 300,3);window.resizeTo(602,screen.height-30);</script></html>
+
+<body  style="background-color:#ffffee;margin:5px 5px 0px 5px"><table align=left><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+</p></td><td  align=left valign=top><p><nobr><b>public</b> <b>static</b> PythonFunction parsePython(String text)</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>PythonFunction func = <b>new</b> PythonFunction();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (!text.startsWith(<font color=red>"def&nbsp;"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>func.errorCode = PythonFunction.INCORRECTFORMAT;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> func;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>int</b> nameEnd = text.indexOf(<font color=#FF00CC>'('</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (nameEnd == -1 || text.indexOf(<font color=#FF00CC>')'</font>) == -1 || text.indexOf(<font color=#FF00CC>':'</font>) == -1)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>func.errorCode = PythonFunction.INCORRECTFORMAT;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> func;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>func.name = text.substring(4, nameEnd).trum();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (!func.name.matches(<font color=red>"[a-zA-Z_][a-zA-Z0-9_]*"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>func.errorCode = Pythonfunction.INVALIDFUNCNAME;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> func;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>int</b> bodyIndex = text.indexOf(<font color=#FF00CC>'\t'</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (bodyIndex == -1)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>func.errorCode = PythonFunction.NODeFINITION;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> func;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>func.body = text.substring(bodyIndex).trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>return</b> func;</nobr><br>
+<nobr>}</nobr><br>
+</p></td></tr></table></center>
